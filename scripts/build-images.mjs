@@ -51,7 +51,9 @@ async function main() {
     for (const w of size.widths) {
       const pipeline = () => {
         const p = sharp(src).rotate();
-        return size.square ? p.resize(w, w, { fit: 'cover', position: 'centre' }) : p.resize({ width: w });
+        if (!size.ratio) return p.resize({ width: w });
+        const h = Math.round((w * size.ratio[1]) / size.ratio[0]);
+        return p.resize(w, h, { fit: 'cover', position: 'centre' });
       };
       await Promise.all([
         pipeline().webp({ quality: 80, effort: 5 }).toFile(path.join(OUT_DIR, `${img.name}-${w}.webp`)),

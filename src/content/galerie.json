@@ -1,31 +1,19 @@
 {
   "nadpis": "Galerie",
-  "text": "Nejnovější práce rovnou z Instagramu. Každý nový příspěvek se tu objeví sám.",
+  "text": "Výběr mých prací z Instagramu. Další najdete na mém profilu.",
   "tlacitko": "Sledovat na Instagramu",
   "fotky": [
     {
-      "foto": "/photos/lila-mandle.jpg",
-      "popis": "Mandlové nehty v lila odstínu se třpytkami"
+      "foto": "/photos/instagram-dual-forms.jpg",
+      "popis": "Dlouhé hranaté nehty v jemném nude odstínu s třpytivými špičkami"
     },
     {
-      "foto": "/photos/prace-s-frezkou.jpg",
-      "popis": "Práce s frézkou při modeláži nehtů"
+      "foto": "/photos/instagram-modern-manicure.jpg",
+      "popis": "Oválné nehty s perleťovým třpytem a růžová kytička"
     },
     {
-      "foto": "/photos/perletove-ovaly.jpg",
-      "popis": "Oválné nehty s perleťovým leskem"
-    },
-    {
-      "foto": "/photos/perletovy-detail.jpg",
-      "popis": "Detail perleťového třpytu na nehtech"
-    },
-    {
-      "foto": "/photos/lila-spicky.jpg",
-      "popis": "Detail lila špiček mandlových nehtů"
-    },
-    {
-      "foto": "/photos/stetce-a-gel.jpg",
-      "popis": "Štětce a gel na pracovním stole studia"
+      "foto": "/photos/instagram-lila-mandle.jpg",
+      "popis": "Mandlové nehty v lila a růžovém odstínu s perleťovým efektem"
     }
   ]
 }

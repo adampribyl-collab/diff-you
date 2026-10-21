@@ -89,6 +89,13 @@ function jsonLd(c, webUrl) {
   return JSON.stringify(data, null, 2).replace(/</g, '\\u003c');
 }
 
+/** Profilová fotka z Instagramu do kroužku u galerie (jen ozdoba – vedle je jméno účtu). */
+function avatarPicture(foto) {
+  const name = imageName(foto, 'avatar');
+  if (!name || !existsSync(path.join(ROOT, String(foto).replace(/^\/+/, '')))) return null;
+  return safe(picture(name, { size: 'avatar', sizes: '64px', alt: '', width: 160, height: 160 }));
+}
+
 async function buildContext(c) {
   const webUrl = normalizeUrl(c.studio.web);
   const accent = /^#[0-9a-f]{6}$/i.test(c.studio.barva || '') ? c.studio.barva : DEFAULT_ACCENT;
@@ -129,8 +136,10 @@ async function buildContext(c) {
       .map((f) => ({ ...f, name: imageName(f.foto, 'galerie') }))
       .filter((f) => f.name && existsSync(path.join(ROOT, f.foto.replace(/^\/+/, ''))))
       .map((f) => ({
-        obrazek: safe(picture(f.name, { size: 'galerie', sizes: '(min-width: 1440px) 432px, 31vw', alt: f.popis || '', width: 800, height: 800 })),
+        popis: f.popis,
+        obrazek: safe(picture(f.name, { size: 'galerie', sizes: '(min-width: 1440px) 432px, 31vw', alt: f.popis || '', width: 960, height: 1280 })),
       })),
+    instagramAvatar: avatarPicture(c.studio.instagramFoto),
     hodnoceniHvezdy: safe(stars(c.reference.hodnoceni)),
     recenze: (c.reference.recenze || []).map((r) => ({
       ...r,

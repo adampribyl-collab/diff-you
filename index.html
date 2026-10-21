@@ -89,19 +89,19 @@
               <p class="lead">{{galerie.text}}</p>
             </div>
             <div class="insta">
-              <div class="insta__profile">
-                <span class="insta__avatar" aria-hidden="true">{{studio.zkratka}}</span>
+              <a class="insta__profile" href="{{studio.instagram}}">
+                <span class="insta__avatar" aria-hidden="true">{{#if instagramAvatar}}{{instagramAvatar}}{{else}}{{studio.zkratka}}{{/if}}</span>
                 <span class="insta__names">
                   <span class="insta__handle">{{studio.instagramJmeno}}</span>
                   <span class="insta__desc">{{studio.instagramPopis}}</span>
                 </span>
-              </div>
+              </a>
               <a class="btn btn--outline" href="{{studio.instagram}}">{{galerie.tlacitko}}</a>
             </div>
           </div>
           <div class="gallery-grid">
             {{#each galerieFotky}}
-            <div class="gallery-grid__item">{{obrazek}}</div>
+            <a class="gallery-grid__item" href="{{../studio.instagram}}" aria-label="{{popis}} – Instagram {{../studio.instagramJmeno}}">{{obrazek}}</a>
             {{/each}}
           </div>
         </div>

@@ -56,7 +56,8 @@ collections:
           - { name: instagram, label: Odkaz na Instagram, hint: "Celá adresa, např. https://www.instagram.com/diff.you/" }
           - { name: instagramJmeno, label: Jméno na Instagramu, hint: "Např. @diff.you – ukazuje se v galerii." }
           - { name: instagramPopis, label: Popis pod jménem na Instagramu }
-          - { name: zkratka, label: Zkratka v kroužku u Instagramu, hint: "Dvě písmena, např. DY" }
+          - { name: instagramFoto, label: Profilová fotka z Instagramu, widget: image, required: false, hint: "Čtvercová, ukáže se v kroužku vedle jména v galerii." }
+          - { name: zkratka, label: Zkratka v kroužku u Instagramu, hint: "Dvě písmena, např. DY. Ukáže se jen tehdy, když chybí profilová fotka." }
           - { name: web, label: Adresa webu, hint: "Celá adresa, např. https://www.diffyou.cz – pro Google a sdílení na sociálních sítích." }
 
       # ------------------------------------------------------------- VZKAZ
@@ -132,7 +133,7 @@ collections:
             label_singular: fotku
             widget: list
             summary: "{{fields.popis}}"
-            hint: Fotky se oříznou na čtverec na střed. Galerie má tři sloupce, nejlépe vypadá 6 nebo 9 fotek.
+            hint: "Fotky se oříznou na výšku 3:4 na střed, jako mřížka na Instagramu. Každá fotka je proklik na Instagram profil. Galerie má tři sloupce – nejlépe vypadají 3 fotky (jedna řada), případně 6." 
             fields:
               - { name: foto, label: Fotka, widget: image }
               - { name: popis, label: Popis fotky, hint: Co na fotce je – pro nevidomé a Google. }

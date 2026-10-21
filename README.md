@@ -21,12 +21,12 @@ V redakci je jedna sekce **Obsah webu** s částmi stránky v pořadí, jak jdou
 
 | Část | Co se v ní mění |
 | --- | --- |
-| Studio a odkazy | název, barva akcentu, odkaz na rezervace (Notino), Instagram, adresa webu |
+| Studio a odkazy | název, barva akcentu, odkaz na rezervace (Notino), Instagram a profilová fotka, adresa webu |
 | Vzkaz nahoře | pruh s citátem a podpisem autorky (dá se skrýt) |
 | Menu | názvy položek menu a tlačítko |
 | Úvod | text pod logem, tlačítka, fotka a poloha třpytu |
 | Ceník | služby, délka návštěvy a ceny |
-| Galerie | fotky (oříznou se na čtverec) |
+| Galerie | fotky z Instagramu (oříznou se na výšku 3:4), každá je proklik na profil |
 | Reference | průměrné hodnocení a recenze |
 | Certifikáty | kurzy a skeny certifikátů |
 | Opravy a storno | ceny oprav a storno podmínky |
@@ -35,6 +35,13 @@ V redakci je jedna sekce **Obsah webu** s částmi stránky v pořadí, jak jdou
 | Google a sdílení | titulek, popis, skrytí webu před vyhledávači |
 
 Po uložení se web za 1–3 minuty sám aktualizuje (průběh je vidět v záložce **Actions** na GitHubu).
+
+### Galerie a Instagram
+
+Galerie ukazuje tři připnuté příspěvky z Instagramu [@different.by.ann_](https://www.instagram.com/different.by.ann_/)
+a profilovou fotku. Fotky jsou uložené přímo na webu (ve složce `photos/`), web nic nenačítá z Instagramu.
+Když se na Instagramu změní připnuté příspěvky, stačí v redakci v **Galerie** vyměnit fotky – nejlépe originály
+z telefonu, budou ostřejší než stažené z Instagramu.
 
 ### Třpyt v úvodu
 
@@ -73,7 +80,8 @@ z nich vyrobí zmenšené verze WebP a JPG do `public/img/`:
 | Fotka | Velikosti | Úprava |
 | --- | --- | --- |
 | úvodní fotka | 800, 1400 px | bez ořezu, do sekce se ořízne až v prohlížeči (motiv vpravo) |
-| galerie | 400, 800 px | čtverec, ořez na střed |
+| galerie | 480, 960 px | na výšku 3:4 jako mřížka na Instagramu, ořez na střed |
+| profilová fotka z Instagramu | 160 px | čtverec |
 | sken certifikátu | 400, 800 px | bez ořezu |
 
 Nezměněné fotky skript přeskočí (`scripts/.images-manifest.json`).
@@ -94,8 +102,6 @@ v soukromém repozitáři `diff-you-web`.
 
 - Vzkaz nahoře: skutečné jméno autorky místo `[Jméno autorky]`
 - Certifikáty: názvy kurzů, školitele, roky a skeny
-- Galerie: text slibuje, že se nové příspěvky z Instagramu objeví samy – fotky se ale přidávají ručně v redakci,
-  text je dobré upravit
 - Studio a odkazy → Adresa webu, až bude mít web vlastní doménu
 
 ## Struktura

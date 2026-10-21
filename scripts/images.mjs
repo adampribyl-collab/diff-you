@@ -8,8 +8,10 @@
 export const SIZES = {
   // úvodní fotka: bez ořezu, do sekce se ořezává až v prohlížeči (object-fit: cover)
   hero: { widths: [800, 1400] },
-  // galerie: čtverec, ořez na střed
-  galerie: { widths: [400, 800], square: true },
+  // galerie: na výšku 3:4 jako mřížka na Instagramu, ořez na střed
+  galerie: { widths: [480, 960], ratio: [3, 4] },
+  // profilová fotka z Instagramu v kroužku u galerie
+  avatar: { widths: [160], ratio: [1, 1] },
   // sken certifikátu: bez ořezu, v rámečku A4 se zobrazí celý
   cert: { widths: [400, 800] },
 };
@@ -32,6 +34,8 @@ export function imageName(foto, prefix) {
 /** Všechny obrázky, které web potřebuje, podle aktuálního obsahu. */
 export function imagesFromContent(c) {
   const list = [{ name: 'hero', foto: c.hero.foto, size: 'hero', required: true }];
+  const avatar = imageName(c.studio.instagramFoto, 'avatar');
+  if (avatar) list.push({ name: avatar, foto: c.studio.instagramFoto, size: 'avatar' });
   for (const f of c.galerie.fotky || []) {
     const name = imageName(f.foto, 'galerie');
     if (name) list.push({ name, foto: f.foto, size: 'galerie' });
