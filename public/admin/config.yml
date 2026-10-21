@@ -154,11 +154,11 @@ collections:
             label_singular: recenzi
             widget: list
             summary: "{{fields.jmeno}} – {{fields.sluzba}}"
-            hint: Na počítači se ukazují tři vedle sebe.
+            hint: "Na počítači se ukazují vedle sebe – nejlépe vypadají 3 nebo 4 recenze." 
             fields:
               - { name: text, label: Text recenze, widget: text, hint: Uvozovky se doplní samy. }
               - { name: jmeno, label: Jméno, hint: "Např. Tereza K. – první písmeno se ukáže v kroužku." }
-              - { name: sluzba, label: Služba }
+              - { name: sluzba, label: Popisek pod jménem, hint: "Např. Ověřená recenze · 2. 10. 2026 nebo název služby" }
               - { name: hvezdy, label: Počet hvězdiček, widget: number, value_type: int, min: 1, max: 5, default: 5 }
 
       # -------------------------------------------------------- CERTIFIKÁTY

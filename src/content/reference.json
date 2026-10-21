@@ -1,27 +1,33 @@
 {
   "nadpis": "Reference",
   "text": "Co říkají klientky po návštěvě. Všechna hodnocení jsou z rezervací přes Notino.",
-  "hodnoceni": "4,9",
-  "hodnoceniPopisek": "Průměrné hodnocení na Notinu",
+  "hodnoceni": "5,0",
+  "hodnoceniPopisek": "Průměrné hodnocení na Notinu (4 hodnocení)",
   "odkazText": "Přečíst všechny recenze",
   "odkaz": "https://www.notino.cz/salony/diff-you_1/?utm_source=salon_mkt&utm_medium=qr&utm_campaign=booking_promo&utm_content=76f5f370-7b18-4eab-be15-e681d4d8333f",
   "recenze": [
     {
-      "text": "Babyboomer mi vydržel přes čtyři týdny bez jediného odlomení. Konečně manikúra, kterou nemusím řešit.",
-      "jmeno": "Tereza K.",
-      "sluzba": "Babyboomer",
+      "text": "Nejlepší manikúra v blízkém okolí. Prostě perfektní. Anička je moc milá a vždy dobře poradí co se ke mě hodí.",
+      "jmeno": "Tereza E.",
+      "sluzba": "Ověřená recenze · 2. 10. 2026",
       "hvezdy": 5
     },
     {
-      "text": "Přišla jsem s fotkou z Pinterestu a odcházela s něčím ještě hezčím. Oceňuju, že si na mě udělala čas.",
-      "jmeno": "Lucie M.",
-      "sluzba": "Barva",
+      "text": "Jsem vždy maximálně spokojená. Nehty vypadají dokonale, tenoučká vrstva laku, precizní práce, příjemné prostředí. Lepší péči těžko pohledat...",
+      "jmeno": "Martina",
+      "sluzba": "Ověřená recenze · 15. 9. 2026",
       "hvezdy": 5
     },
     {
-      "text": "Příjemná atmosféra a precizní práce do posledního detailu. Už mám zarezervovaný další termín.",
-      "jmeno": "Kristýna D.",
-      "sluzba": "French",
+      "text": "U Aničky je to vždy perfektní 🙂🙃",
+      "jmeno": "Anna M.",
+      "sluzba": "Ověřená recenze · 2. 9. 2026",
+      "hvezdy": 5
+    },
+    {
+      "text": "nejlepší nehtařka s tou nejkvalitnější prací a krásným studiem🩷",
+      "jmeno": "Karolína B.",
+      "sluzba": "Ověřená recenze · 12. 8. 2026",
       "hvezdy": 5
     }
   ]
