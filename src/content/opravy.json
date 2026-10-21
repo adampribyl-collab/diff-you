@@ -1,0 +1,32 @@
+{
+  "nadpis": "Opravy a storno",
+  "text": "Termín držím jen pro vás, proto platí pár jednoduchých pravidel.",
+  "skupiny": [
+    {
+      "nadpis": "Opravy",
+      "polozky": [
+        {
+          "cena": "40 Kč / nehet",
+          "popis": "Dodělání zlomeného nebo krátkého nehtu během návštěvy"
+        },
+        {
+          "cena": "100 Kč / nehet",
+          "popis": "Oprava zlomeného nehtu nebo ztrhnuté modeláže po 48 hodinách"
+        }
+      ]
+    },
+    {
+      "nadpis": "Storno",
+      "polozky": [
+        {
+          "cena": "600 Kč",
+          "popis": "Zrušení termínu méně než 24 hodin předem"
+        },
+        {
+          "cena": "1 000 Kč",
+          "popis": "Nedostavení se na domluvený termín"
+        }
+      ]
+    }
+  ]
+}

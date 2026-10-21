@@ -1,0 +1,21 @@
+{
+  "name": "diff-you",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Web DIFF.YOU – manikúra a modeláž nehtů",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/build-images.mjs && vite build",
+    "preview": "vite preview",
+    "images": "node scripts/build-images.mjs"
+  },
+  "devDependencies": {
+    "handlebars": "^4.7.10",
+    "sharp": "^0.35.5",
+    "vite": "^8.3.4"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

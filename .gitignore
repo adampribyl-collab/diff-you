@@ -1,0 +1,7 @@
+node_modules
+dist
+.DS_Store
+
+# zmenšeniny fotek – vyrábí je build (npm run images)
+public/img/
+scripts/.images-manifest.json

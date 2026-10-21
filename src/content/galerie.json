@@ -1,0 +1,31 @@
+{
+  "nadpis": "Galerie",
+  "text": "Nejnovější práce rovnou z Instagramu. Každý nový příspěvek se tu objeví sám.",
+  "tlacitko": "Sledovat na Instagramu",
+  "fotky": [
+    {
+      "foto": "/photos/lila-mandle.jpg",
+      "popis": "Mandlové nehty v lila odstínu se třpytkami"
+    },
+    {
+      "foto": "/photos/prace-s-frezkou.jpg",
+      "popis": "Práce s frézkou při modeláži nehtů"
+    },
+    {
+      "foto": "/photos/perletove-ovaly.jpg",
+      "popis": "Oválné nehty s perleťovým leskem"
+    },
+    {
+      "foto": "/photos/perletovy-detail.jpg",
+      "popis": "Detail perleťového třpytu na nehtech"
+    },
+    {
+      "foto": "/photos/lila-spicky.jpg",
+      "popis": "Detail lila špiček mandlových nehtů"
+    },
+    {
+      "foto": "/photos/stetce-a-gel.jpg",
+      "popis": "Štětce a gel na pracovním stole studia"
+    }
+  ]
+}

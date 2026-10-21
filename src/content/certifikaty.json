@@ -1,0 +1,31 @@
+{
+  "nadpis": "Certifikáty",
+  "text": "Kurzy a školení, které jsem absolvovala. Nové techniky se učím průběžně, aby vaše nehty vypadaly i vydržely co nejlépe.",
+  "bezSkenu": "Sem vložte sken certifikátu",
+  "polozky": [
+    {
+      "nazev": "[Název kurzu]",
+      "skola": "[Akademie nebo školitel]",
+      "rok": "[rok]",
+      "sken": ""
+    },
+    {
+      "nazev": "[Název kurzu]",
+      "skola": "[Akademie nebo školitel]",
+      "rok": "[rok]",
+      "sken": ""
+    },
+    {
+      "nazev": "[Název kurzu]",
+      "skola": "[Akademie nebo školitel]",
+      "rok": "[rok]",
+      "sken": ""
+    },
+    {
+      "nazev": "[Název kurzu]",
+      "skola": "[Akademie nebo školitel]",
+      "rok": "[rok]",
+      "sken": ""
+    }
+  ]
+}

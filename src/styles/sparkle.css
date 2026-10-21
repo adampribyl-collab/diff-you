@@ -1,0 +1,17 @@
+/* Třpyt v úvodní sekci – vrstvu přidává src/js/sparkle.js mezi fotku a text */
+.dy-fx{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
+.dy-fx canvas{position:absolute;inset:0;width:100%;height:100%;mix-blend-mode:screen}
+.dy-spark{position:absolute;left:0;top:0;width:0;height:0;font-size:40px;mix-blend-mode:screen}
+.dy-spark>i{position:absolute;left:0;top:0;display:block}
+.dy-glow{width:6em;height:6em;margin:-3em 0 0 -3em;border-radius:50%;background:radial-gradient(circle closest-side,rgba(255,226,192,.6),rgba(236,176,124,.24) 40%,rgba(230,170,120,0));animation:dy-glow 2.2s ease-in-out infinite}
+.dy-ray{width:0;height:0;animation:dy-flare 2.2s ease-in-out infinite}
+.dy-ray::before,.dy-ray::after{content:"";position:absolute;left:-2.2em;top:-.08em;width:4.4em;height:.16em;border-radius:50%;background:radial-gradient(closest-side,#fff,rgba(255,240,220,.9) 28%,rgba(255,214,170,.3) 60%,rgba(255,214,170,0))}
+.dy-ray::after{transform:rotate(90deg)}
+.dy-ray-x{transform:rotate(45deg);animation:dy-flare-x 1.45s ease-in-out infinite}
+.dy-ray-x::before,.dy-ray-x::after{left:-1.2em;width:2.4em;top:-.05em;height:.1em}
+.dy-core{width:.8em;height:.8em;margin:-.4em 0 0 -.4em;border-radius:50%;background:radial-gradient(circle closest-side,#fff,rgba(255,244,228,.95) 30%,rgba(255,226,190,0));animation:dy-core 2.2s ease-in-out infinite}
+@keyframes dy-flare{0%{transform:scale(.3) rotate(-6deg);opacity:.35}10%{transform:scale(1.1) rotate(0deg);opacity:1}26%{transform:scale(.6) rotate(4deg);opacity:.75}40%{transform:scale(.85) rotate(6deg);opacity:.95}65%{transform:scale(.4) rotate(2deg);opacity:.5}100%{transform:scale(.3) rotate(-6deg);opacity:.35}}
+@keyframes dy-flare-x{0%,100%{transform:rotate(45deg) scale(.2);opacity:0}35%{transform:rotate(45deg) scale(.75);opacity:.8}55%{transform:rotate(45deg) scale(.35);opacity:.4}}
+@keyframes dy-glow{0%,100%{transform:scale(.8);opacity:.5}12%{transform:scale(1.12);opacity:1}55%{transform:scale(.9);opacity:.7}}
+@keyframes dy-core{0%,100%{transform:scale(.7);opacity:.7}10%{transform:scale(1.25);opacity:1}50%{transform:scale(.85);opacity:.85}}
+@media (prefers-reduced-motion:reduce){.dy-spark>i{animation:none!important}.dy-ray{transform:scale(.7)}.dy-ray-x{opacity:0}}

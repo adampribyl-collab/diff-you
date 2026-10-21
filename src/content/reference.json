@@ -1,0 +1,28 @@
+{
+  "nadpis": "Reference",
+  "text": "Co říkají klientky po návštěvě. Všechna hodnocení jsou z rezervací přes Notino.",
+  "hodnoceni": "4,9",
+  "hodnoceniPopisek": "Průměrné hodnocení na Notinu",
+  "odkazText": "Přečíst všechny recenze",
+  "odkaz": "https://www.notino.cz/salony/diff-you_1/",
+  "recenze": [
+    {
+      "text": "Babyboomer mi vydržel přes čtyři týdny bez jediného odlomení. Konečně manikúra, kterou nemusím řešit.",
+      "jmeno": "Tereza K.",
+      "sluzba": "Babyboomer",
+      "hvezdy": 5
+    },
+    {
+      "text": "Přišla jsem s fotkou z Pinterestu a odcházela s něčím ještě hezčím. Oceňuju, že si na mě udělala čas.",
+      "jmeno": "Lucie M.",
+      "sluzba": "Barva",
+      "hvezdy": 5
+    },
+    {
+      "text": "Příjemná atmosféra a precizní práce do posledního detailu. Už mám zarezervovaný další termín.",
+      "jmeno": "Kristýna D.",
+      "sluzba": "French",
+      "hvezdy": 5
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+# Redakční systém webu DIFF.YOU (Sveltia CMS)
+# Dokumentace: https://sveltiacms.app/en/docs
+#
+# Redakce ukládá změny přímo do GitHub repozitáře. Každé uložení spustí GitHub Actions
+# (.github/workflows/deploy.yml), které web sestaví a nahrají na GitHub Pages.
+
+backend:
+  name: github
+  repo: adampribyl-collab/diff-you
+  branch: main
+  # přihlašovací služba pro tlačítko „Přihlásit se přes GitHub“ (Cloudflare Worker sveltia-cms-auth,
+  # GitHub OAuth App „Redakce webů“). Bez ní funguje jen přihlášení tokenem.
+  base_url: https://sveltia-cms-auth.adam-pribyl.workers.dev
+
+# Nahrané fotky se ukládají do /photos, web z nich při sestavení vyrobí zmenšené verze.
+media_folder: /photos
+public_folder: /photos
+
+media_libraries:
+  all:
+    max_file_size: 20000000
+    # fotky z mobilu se při nahrání zmenší a převedou na WebP, ať repozitář zbytečně neroste
+    transformations:
+      raster_image:
+        format: webp
+        quality: 88
+        width: 2400
+        height: 2400
+  default:
+    config:
+      slugify_filename: true
+
+collections:
+  - name: obsah
+    label: Obsah webu
+    description: Jednotlivé části stránky v pořadí, jak jdou na webu za sebou. Po uložení se web za 1–3 minuty sám aktualizuje.
+    format: json
+    editor:
+      preview: false
+    files:
+      # ------------------------------------------------------------ STUDIO
+      - name: studio
+        label: Studio a odkazy
+        file: src/content/studio.json
+        fields:
+          - { name: nazev, label: Název studia, hint: "Logo v menu, velký nápis v úvodu a patička. Tečka v názvu (DIFF.YOU) se ve velkém nápisu ukáže jako kulatá tečka v barvě akcentu." }
+          - name: barva
+            label: Barva akcentu
+            widget: select
+            hint: Tlačítka, pruh se vzkazem nahoře, tečka v logu a hvězdičky.
+            options:
+              - { label: Pudrová, value: "#E2B49A" }
+              - { label: Zlatá, value: "#D4A86A" }
+              - { label: Levandulová, value: "#CDB9DC" }
+          - { name: rezervace, label: Odkaz na rezervace, hint: "Celá adresa profilu na Notinu. Vede na ni každé tlačítko Rezervovat." }
+          - { name: instagram, label: Odkaz na Instagram, hint: "Celá adresa, např. https://www.instagram.com/diff.you/" }
+          - { name: instagramJmeno, label: Jméno na Instagramu, hint: "Např. @diff.you – ukazuje se v galerii." }
+          - { name: instagramPopis, label: Popis pod jménem na Instagramu }
+          - { name: zkratka, label: Zkratka v kroužku u Instagramu, hint: "Dvě písmena, např. DY" }
+          - { name: web, label: Adresa webu, hint: "Celá adresa, např. https://www.diffyou.cz – pro Google a sdílení na sociálních sítích." }
+
+      # ------------------------------------------------------------- VZKAZ
+      - name: vzkaz
+        label: Vzkaz nahoře
+        file: src/content/vzkaz.json
+        fields:
+          - { name: zobrazit, label: Zobrazit pruh se vzkazem, widget: boolean, default: true }
+          - { name: citat, label: Vzkaz, widget: text, hint: Uvozovky se doplní samy. }
+          - { name: podpis, label: Podpis, hint: "Např. Jana Nováková, autorka DIFF.YOU" }
+
+      # ------------------------------------------------------- MENU + ÚVOD
+      - name: navigace
+        label: Menu
+        file: src/content/navigace.json
+        fields:
+          - name: menu
+            label: Položky menu
+            widget: object
+            fields:
+              - { name: cenik, label: Ceník }
+              - { name: galerie, label: Galerie }
+              - { name: reference, label: Reference }
+              - { name: certifikaty, label: Certifikáty }
+          - { name: tlacitko, label: Tlačítko v menu }
+
+      - name: hero
+        label: Úvod
+        file: src/content/hero.json
+        fields:
+          - { name: podtitulek, label: Text pod velkým logem, widget: text }
+          - { name: tlacitkoRezervace, label: Tlačítko rezervace }
+          - { name: tlacitkoCenik, label: Odkaz na ceník }
+          - { name: foto, label: Fotka, widget: image, hint: "Na šířku, aspoň 1400 px. Text je vlevo, hlavní motiv dejte do pravé poloviny. Po výměně fotky nastavte níže bod třpytu." }
+          - { name: popisFoto, label: Popis fotky, hint: Co na fotce je – pro nevidomé a Google. }
+          - name: trpyt
+            label: Třpyt na fotce
+            widget: object
+            hint: "Pulzující hvězda s prachem, nastavená na místo, kde se fréza dotýká nehtu. Poloha je v procentech fotky: X zleva doprava, Y shora dolů."
+            fields:
+              - { name: zobrazit, label: Zobrazit třpyt, widget: boolean, default: true }
+              - { name: x, label: Poloha X (%), widget: number, value_type: float, min: 0, max: 100, step: 0.1 }
+              - { name: y, label: Poloha Y (%), widget: number, value_type: float, min: 0, max: 100, step: 0.1 }
+
+      # ------------------------------------------------------------- CENÍK
+      - name: cenik
+        label: Ceník
+        file: src/content/cenik.json
+        fields:
+          - { name: nadpis, label: Nadpis }
+          - { name: texty, label: Texty pod nadpisem, widget: list, hint: Každý řádek je samostatný odstavec. }
+          - name: polozky
+            label: Služby
+            label_singular: službu
+            widget: list
+            summary: "{{fields.nazev}} – {{fields.cena}}"
+            hint: Pořadí v seznamu = pořadí v ceníku.
+            fields:
+              - { name: nazev, label: Název }
+              - { name: delka, label: Délka návštěvy, hint: "Např. 90 min nebo 120–150 min" }
+              - { name: cena, label: Cena, hint: "Např. 1 000 Kč nebo 1 300 / 1 600 Kč" }
+
+      # ------------------------------------------------------------ GALERIE
+      - name: galerie
+        label: Galerie
+        file: src/content/galerie.json
+        fields:
+          - { name: nadpis, label: Nadpis }
+          - { name: text, label: Text pod nadpisem, widget: text }
+          - { name: tlacitko, label: Tlačítko na Instagram, hint: "Jméno a odkaz na Instagram se berou ze Studio a odkazy." }
+          - name: fotky
+            label: Fotky
+            label_singular: fotku
+            widget: list
+            summary: "{{fields.popis}}"
+            hint: Fotky se oříznou na čtverec na střed. Galerie má tři sloupce, nejlépe vypadá 6 nebo 9 fotek.
+            fields:
+              - { name: foto, label: Fotka, widget: image }
+              - { name: popis, label: Popis fotky, hint: Co na fotce je – pro nevidomé a Google. }
+
+      # ---------------------------------------------------------- REFERENCE
+      - name: reference
+        label: Reference
+        file: src/content/reference.json
+        fields:
+          - { name: nadpis, label: Nadpis }
+          - { name: text, label: Text pod nadpisem, widget: text }
+          - { name: hodnoceni, label: Průměrné hodnocení, hint: "Např. 4,9" }
+          - { name: hodnoceniPopisek, label: Popisek hodnocení }
+          - { name: odkazText, label: Text odkazu na recenze }
+          - { name: odkaz, label: Odkaz na recenze, hint: Celá adresa stránky s recenzemi. }
+          - name: recenze
+            label: Recenze
+            label_singular: recenzi
+            widget: list
+            summary: "{{fields.jmeno}} – {{fields.sluzba}}"
+            hint: Na počítači se ukazují tři vedle sebe.
+            fields:
+              - { name: text, label: Text recenze, widget: text, hint: Uvozovky se doplní samy. }
+              - { name: jmeno, label: Jméno, hint: "Např. Tereza K. – první písmeno se ukáže v kroužku." }
+              - { name: sluzba, label: Služba }
+              - { name: hvezdy, label: Počet hvězdiček, widget: number, value_type: int, min: 1, max: 5, default: 5 }
+
+      # -------------------------------------------------------- CERTIFIKÁTY
+      - name: certifikaty
+        label: Certifikáty
+        file: src/content/certifikaty.json
+        fields:
+          - { name: nadpis, label: Nadpis }
+          - { name: text, label: Text pod nadpisem, widget: text }
+          - { name: bezSkenu, label: Text v rámečku bez skenu, hint: Ukáže se u certifikátu, ke kterému ještě není nahraný sken. }
+          - name: polozky
+            label: Certifikáty
+            label_singular: certifikát
+            widget: list
+            summary: "{{fields.nazev}}"
+            hint: Na počítači se ukazují čtyři vedle sebe.
+            fields:
+              - { name: nazev, label: Název kurzu }
+              - { name: skola, label: Akademie nebo školitel }
+              - { name: rok, label: Rok }
+              - { name: sken, label: Sken certifikátu, widget: image, required: false, hint: "Ideálně na výšku (A4). Zobrazí se celý, nic se neořízne." }
+
+      # ---------------------------------------------------- OPRAVY A STORNO
+      - name: opravy
+        label: Opravy a storno
+        file: src/content/opravy.json
+        fields:
+          - { name: nadpis, label: Nadpis }
+          - { name: text, label: Text pod nadpisem, widget: text }
+          - name: skupiny
+            label: Sloupce
+            label_singular: sloupec
+            widget: list
+            summary: "{{fields.nadpis}}"
+            fields:
+              - { name: nadpis, label: Nadpis sloupce }
+              - name: polozky
+                label: Položky
+                label_singular: položku
+                widget: list
+                summary: "{{fields.cena}} – {{fields.popis}}"
+                fields:
+                  - { name: cena, label: Cena, hint: "Např. 40 Kč / nehet" }
+                  - { name: popis, label: Popis }
+
+      # ---------------------------------------------------------- REZERVACE
+      - name: rezervace
+        label: Rezervace
+        file: src/content/rezervace.json
+        fields:
+          - { name: nadpis, label: Nadpis }
+          - { name: text, label: Text, widget: text }
+          - { name: tlacitko, label: Tlačítko, hint: "Odkaz se bere ze Studio a odkazy → Odkaz na rezervace." }
+
+      # ------------------------------------------------------------ PATIČKA
+      - name: paticka
+        label: Patička
+        file: src/content/paticka.json
+        fields:
+          - { name: text, label: Text vpravo, hint: "Zobrazí se jako © rok text, rok se doplní sám." }
+
+      # ------------------------------------------------------------- GOOGLE
+      - name: seo
+        label: Google a sdílení
+        file: src/content/seo.json
+        fields:
+          - { name: titulek, label: Titulek stránky, hint: Záložka prohlížeče, výsledky Google a náhled při sdílení odkazu. Ideálně do 60 znaků. }
+          - { name: popis, label: Popis, widget: text, hint: Výsledky Google a náhled při sdílení odkazu. Ideálně do 160 znaků. }
+          - { name: skrytProVyhledavace, label: Skrýt web před vyhledávači, widget: boolean, default: false, hint: "Zapněte, dokud je web jen náhled (Google ho pak nebude zobrazovat ve výsledcích)." }

@@ -1,0 +1,49 @@
+{
+  "nadpis": "Ceník",
+  "texty": [
+    "Platný od 1. 10. 2026. U každé služby je uvedena přibližná délka návštěvy.",
+    "Na místě můžete zaplatit QR platbou."
+  ],
+  "polozky": [
+    {
+      "nazev": "Gellak",
+      "delka": "90 min",
+      "cena": "1 000 Kč"
+    },
+    {
+      "nazev": "Minimalist",
+      "delka": "90 min",
+      "cena": "1 100 Kč"
+    },
+    {
+      "nazev": "Minimalist II",
+      "delka": "120 min",
+      "cena": "1 400 Kč"
+    },
+    {
+      "nazev": "French",
+      "delka": "120 min",
+      "cena": "1 300 / 1 600 Kč"
+    },
+    {
+      "nazev": "Barva",
+      "delka": "120–150 min",
+      "cena": "1 300 / 1 600 Kč"
+    },
+    {
+      "nazev": "Babyboomer",
+      "delka": "120–150 min",
+      "cena": "1 400 / 1 600 Kč"
+    },
+    {
+      "nazev": "Different refresh",
+      "delka": "120–150 min",
+      "cena": "1 800 Kč"
+    },
+    {
+      "nazev": "Odstranění",
+      "delka": "60 min",
+      "cena": "1 000 Kč"
+    }
+  ]
+}
